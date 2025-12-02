@@ -1,0 +1,27 @@
+# Base Configuration
+project:
+  name: yologo
+  version: "0.1.0"
+  seed: 42
+  device: cuda  # cuda, cpu, or mps
+
+paths:
+  # Dataset root (update this to your actual dataset location)
+  data_root: /path/to/synth_go/output
+  
+  # Project directories
+  output_dir: ./outputs
+  log_dir: ./logs
+  checkpoint_dir: ./outputs/checkpoints
+  tensorboard_dir: ./logs/tensorboard
+
+logging:
+  level: INFO  # DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  tensorboard: true
+  console: true
+  file: true
+
+reproducibility:
+  deterministic: true
+  benchmark: false  # Set to true for faster training if input sizes are fixed

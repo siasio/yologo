@@ -1,0 +1,69 @@
+# Position Recognizer Configuration
+model:
+  backbone: mobilenetv3_small  # mobilenetv3_small, mobilenetv3_large, efficientnet_lite0
+  pretrained: true
+  input_size: 224
+  num_classes: 4  # empty, black, white, occluded
+  output_shape: [19, 19]
+  dropout: 0.2
+
+training:
+  epochs: 150
+  batch_size: 64
+  accumulation_steps: 1
+  
+  optimizer:
+    type: AdamW
+    lr: 0.001
+    weight_decay: 0.0001
+    betas: [0.9, 0.999]
+  
+  scheduler:
+    type: CosineAnnealingLR
+    T_max: 150
+    eta_min: 0.00001
+    warmup_epochs: 10
+  
+  loss:
+    type: cross_entropy  # cross_entropy, focal_loss
+    label_smoothing: 0.1
+    use_class_weights: true  # Use weights from data.yaml
+  
+  # Curriculum learning
+  curriculum:
+    enabled: true
+    stages:
+      - epochs: 30
+        max_stones: 50
+        occluded_prob: 0.0
+      - epochs: 60
+        max_stones: 150
+        occluded_prob: 0.1
+      - epochs: 150
+        max_stones: 361
+        occluded_prob: 0.3
+  
+  # Early stopping
+  early_stopping:
+    patience: 20
+    monitor: val_accuracy
+    mode: max
+  
+  # Checkpointing
+  checkpoint:
+    save_top_k: 3
+    monitor: val_accuracy
+    mode: max
+    save_last: true
+
+validation:
+  frequency: 1
+  batch_size: 128
+
+evaluation:
+  # Metrics to track
+  metrics:
+    - accuracy
+    - per_class_accuracy
+    - confusion_matrix
+    - f1_score

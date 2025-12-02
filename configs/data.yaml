@@ -1,0 +1,68 @@
+# Data Configuration
+data:
+  # Dataset splits
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+  
+  # Dataset paths (relative to data_root from base_config)
+  manifest_pattern: "**/*_manifest.json"  # Glob pattern to find manifest files
+  
+  # Image processing
+  image_format: png
+  cache_processed: true  # Cache preprocessed images for faster loading
+  num_workers: 4  # DataLoader workers
+  pin_memory: true  # Pin memory for faster GPU transfer
+
+# Augmentation settings for board detection
+board_detection_augmentation:
+  train:
+    resize:
+      height: 640
+      width: 640
+    rotation_limit: 15
+    brightness_limit: 0.2
+    contrast_limit: 0.2
+    blur_limit: 7
+    perspective: true
+    horizontal_flip: false  # Go boards have orientation
+    vertical_flip: false
+    
+  val:
+    resize:
+      height: 640
+      width: 640
+
+# Augmentation settings for position recognition
+position_recognition_augmentation:
+  train:
+    resize:
+      height: 224
+      width: 224
+    rotation_limit: 5  # Small since board is already rectified
+    brightness_limit: 0.3
+    contrast_limit: 0.3
+    saturation_limit: 0.2
+    hue_limit: 10
+    blur_limit: 5
+    gaussian_noise: 0.01
+    
+  val:
+    resize:
+      height: 224
+      width: 224
+
+# Class definitions
+classes:
+  position_states:
+    - empty
+    - black
+    - white
+    - occluded
+  
+  # Class weights for loss function (higher weight = more important)
+  class_weights:
+    empty: 1.0
+    black: 1.0
+    white: 1.0
+    occluded: 2.0  # Weight occluded class higher as it's rarer

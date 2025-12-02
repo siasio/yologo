@@ -1,0 +1,117 @@
+{
+  "datapoint_id": "f9755b98-4ad1-4d8e-aeb1-fdeb1f8280e4",
+  "rendered_image": {
+    "path": "output/pipeline_runs/87ffb505-4763-4d89-85a9-aaa8344d303f/image_renderer/f9755b98-4ad1-4d8e-aeb1-fdeb1f8280e4_image_renderer.png",
+    "absolute_path": "/home/stas/Programming/synth_go/output/pipeline_runs/87ffb505-4763-4d89-85a9-aaa8344d303f/image_renderer/f9755b98-4ad1-4d8e-aeb1-fdeb1f8280e4_image_renderer.png"
+  },
+  "annotated_image": {
+    "path": "output/pipeline_runs/87ffb505-4763-4d89-85a9-aaa8344d303f/image_renderer/f9755b98-4ad1-4d8e-aeb1-fdeb1f8280e4_annotated.png",
+    "absolute_path": "/home/stas/Programming/synth_go/output/pipeline_runs/87ffb505-4763-4d89-85a9-aaa8344d303f/image_renderer/f9755b98-4ad1-4d8e-aeb1-fdeb1f8280e4_annotated.png"
+  },
+  "ground_truth": {
+    "position_array": {
+      "path": "output/pipeline_runs/87ffb505-4763-4d89-85a9-aaa8344d303f/image_renderer/f9755b98-4ad1-4d8e-aeb1-fdeb1f8280e4_ground_truth.npy",
+      "absolute_path": "/home/stas/Programming/synth_go/output/pipeline_runs/87ffb505-4763-4d89-85a9-aaa8344d303f/image_renderer/f9755b98-4ad1-4d8e-aeb1-fdeb1f8280e4_ground_truth.npy",
+      "shape": [
+        2,
+        19,
+        19
+      ],
+      "description": "Binary array of shape (2, 19, 19): channel 0 = black stones, channel 1 = white stones"
+    },
+    "grid_corners": {
+      "pixel_coordinates": {
+        "top_left": [
+          396.4811096191406,
+          155.99908447265625
+        ],
+        "top_right": [
+          351.17523193359375,
+          356.6522979736328
+        ],
+        "bottom_left": [
+          179.9596405029297,
+          111.56756591796875
+        ],
+        "bottom_right": [
+          96.54713439941406,
+          293.5296325683594
+        ]
+      },
+      "description": "Corner intersections of the 19x19 Go grid. Pixel coordinates are (x, y) in image space with origin at top-left"
+    },
+    "wooden_board_corners": {
+      "pixel_coordinates": {
+        "top_left": [
+          405.2545471191406,
+          151.97613525390625
+        ],
+        "top_right": [
+          358.3789978027344,
+          366.9640655517578
+        ],
+        "bottom_left": [
+          175.4302215576172,
+          105.083984375
+        ],
+        "bottom_right": [
+          85.14784240722656,
+          298.7566223144531
+        ]
+      },
+      "description": "Physical corners of the wooden board surface (extends beyond grid). Pixel coordinates are (x, y) in image space with origin at top-left"
+    },
+    "world_coordinates": {
+      "grid_top_left": [
+        9.0,
+        -9.0,
+        0.0
+      ],
+      "grid_top_right": [
+        -9.0,
+        -9.0,
+        0.0
+      ],
+      "grid_bottom_left": [
+        9.0,
+        9.0,
+        0.0
+      ],
+      "grid_bottom_right": [
+        -9.0,
+        9.0,
+        0.0
+      ],
+      "wood_top_left": [
+        9.6,
+        -9.6,
+        0.0
+      ],
+      "wood_top_right": [
+        -9.6,
+        -9.6,
+        0.0
+      ],
+      "wood_bottom_left": [
+        9.6,
+        9.6,
+        0.0
+      ],
+      "wood_bottom_right": [
+        -9.6,
+        9.6,
+        0.0
+      ]
+    }
+  },
+  "metadata": {
+    "rendering_successful": true,
+    "num_stones": 102,
+    "board_size": 19,
+    "resolution": [
+      512,
+      512
+    ],
+    "samples": 128
+  }
+}
